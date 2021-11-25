@@ -11,8 +11,28 @@ namespace CountingStringChars
         /// <returns>A number of digits in a string.</returns>
         public static int GetDigitCount(string str)
         {
-            // TODO #5. Analyze the implementation of "GetDigitCountRecursive" methods, and implement the method using the "do..while" loop statement.
-            throw new NotImplementedException();
+            if (str is null)
+            {
+                throw new ArgumentNullException(nameof(str));
+            }
+
+            if (str.Length == 0)
+            {
+                return 0;
+            }
+
+            int count = 0, currentCharIndex = 0;
+            do
+            {
+                char currentChar = str[currentCharIndex];
+                if (char.IsDigit(currentChar))
+                {
+                    count++;
+                }
+            }
+            while (++currentCharIndex < str.Length);
+
+            return count;
         }
 
         /// <summary>
@@ -22,8 +42,28 @@ namespace CountingStringChars
         /// <returns>A number of letters in a string.</returns>
         public static int GetLetterCount(string str)
         {
-            // TODO #6. Analyze the implementation of "GetLetterCountRecursive" methods, and implement the method using the "do..while" loop statement.
-            throw new NotImplementedException();
+            if (str is null)
+            {
+                throw new ArgumentNullException(nameof(str));
+            }
+
+            if (str.Length == 0)
+            {
+                return 0;
+            }
+
+            int count = 0, currentCharIndex = 0;
+            do
+            {
+                char currentChar = str[currentCharIndex];
+                if (char.IsLetter(currentChar))
+                {
+                    count++;
+                }
+            }
+            while (++currentCharIndex < str.Length);
+
+            return count;
         }
 
         /// <summary>

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace CountingStringChars
 {
@@ -11,8 +11,27 @@ namespace CountingStringChars
         /// <returns>A number of white space characters in a string.</returns>
         public static int GetSpaceCount(string str)
         {
-            // TODO #3. Analyze the implementation of "GetSpaceCountRecursive" method, and implement the method using the "while" loop statement.
-            throw new NotImplementedException();
+            if (str is null)
+            {
+                throw new ArgumentNullException(nameof(str));
+            }
+
+            if (string.IsNullOrEmpty(str))
+            {
+                return 0;
+            }
+
+            int count = 0;
+
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (char.IsWhiteSpace(str[i]))
+                {
+                    count++;
+                }
+            }
+
+            return count;
         }
 
         /// <summary>
@@ -22,8 +41,27 @@ namespace CountingStringChars
         /// <returns>A number of punctuation marks in a string.</returns>
         public static int GetPunctuationCount(string str)
         {
-            // TODO #4. Analyze the implementation of "GetPunctuationCount" method, and implement the method using the "while" loop statement.
-            throw new NotImplementedException();
+            if (str is null)
+            {
+                throw new ArgumentNullException(nameof(str));
+            }
+
+            if (string.IsNullOrEmpty(str))
+            {
+                return 0;
+            }
+
+            int count = 0;
+
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (char.IsPunctuation(str[i]))
+                {
+                    count++;
+                }
+            }
+
+            return count;
         }
 
         /// <summary>
@@ -65,9 +103,7 @@ namespace CountingStringChars
                 return 0;
             }
 
-            bool isPunctuation = char.IsPunctuation(str[0]);
-            int currentIncrement = isPunctuation ? 1 : 0;
-            int result = GetPunctuationCountRecursive(str[1..]) + currentIncrement;
+            int result = GetPunctuationCountRecursive(str[1..]) + (char.IsPunctuation(str[0]) ? 1 : 0);
 
             return result;
         }
